@@ -1,0 +1,12 @@
+tvShow = input("What is your favorite tv show? ")
+if tvShow == "TMKOC":
+  print("Awesome, why?")
+  faveCharacter = input("Who is your favorite character? ")
+  if faveCharacter == "Jethalal":
+    print("Right answer")
+  else:
+    print("Nah, Jethalal's the greatest")
+elif tvShow == "BigBoss":
+  print("Aww, sad times")
+else:
+  print("Yeah, You have some unique choice")
