@@ -1,0 +1,19 @@
+
+import random
+while True:
+  greetings = ["Hello there!", "Konnichiwa", "Guten Tag!", "Bore Da!"]
+  index = random.randint(0,3)
+  print(greetings[index])
+  again=input("Again repeat?")
+  if again == "yes" or again =="Yes":
+    continue
+  elif again == "No" or again =="no":
+    break
+
+print("Goodbye!")
+
+
+  
+
+
+
