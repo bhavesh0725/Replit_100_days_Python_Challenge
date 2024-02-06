@@ -1,94 +1,134 @@
-from getpass import getpass 
-
-def play_game(player1_score,player2_score):
-  while True: 
+from getpass import getpass
 
 
-      player1Move = getpass("Player 1 > ").upper()
-      print()
-      player2Move = getpass("Player 2 > ").upper()
-      print()
+def show_rules():
+  print("Welcome to Rock, Paper, Scissors Game!")
+  print("Rules:")
+  print("1. Players: The game is played between two players.")
+  print(
+      "2. Objective: The objective is to defeat the opponent by choosing a move that beats the opponent's move."
+  )
+  print("3. Moves:")
+  print("   - Rock (R): Defeats scissors but is defeated by paper.")
+  print("   - Paper (P): Defeats rock but is defeated by scissors.")
+  print("   - Scissors (S): Defeats paper but is defeated by rock.")
+  print("4. Gameplay:")
+  print("   - Players take turns choosing their moves.")
+  print("   - The winner of the round is determined based on the rules above.")
+  print("   - The game continues until one player wins three rounds.")
+  print("5. Invalid Inputs:")
+  print(
+      "   - If a player enters an invalid move (i.e., not 'R', 'P', or 'S'), they are prompted to choose again."
+  )
+  print(
+      "   - If both players enter invalid moves, they are both prompted to choose again until valid moves are entered."
+  )
+  print("6. End of Game:")
+  print(
+      "   - Once one player wins three rounds, the game ends, and the winning player is declared."
+  )
+  print(
+      "   - Players have the option to play again or exit the game after the conclusion."
+  )
 
 
-      if player1Move not in ["R", "P", "S"] and player2Move not in ["R", "P", "S"]:
-        print("Invalid input from both Player 1 and Player 2. Please choose R, P, or S.")
-        continue
-      elif player1Move not in ["R", "P", "S"]:
-        print("Invalid input from Player 1. Please choose R, P, or S.")
-        continue
-      elif player2Move not in ["R", "P", "S"]:
-        print("Invalid input from Player 2. Please choose R, P, or S.")
-        continue
+def play_game(player1_score, player2_score):
+
+  print("Lets start the game EPIC  🪨 📄 ✂️ BATTLE ")
+  while True:
+
+    player1Move = getpass("Player 1 > ").upper()
+    print()
+    player2Move = getpass("Player 2 > ").upper()
+    print()
+
+    if player1Move not in ["R", "P", "S"
+                           ] and player2Move not in ["R", "P", "S"]:
+      print(
+          "Invalid input from both Player 1 and Player 2. Please choose R, P, or S."
+      )
+      continue
+    elif player1Move not in ["R", "P", "S"]:
+      print("Invalid input from Player 1. Please choose R, P, or S.")
+      continue
+    elif player2Move not in ["R", "P", "S"]:
+      print("Invalid input from Player 2. Please choose R, P, or S.")
+      continue
   #this line is for handling the invalid output from the players
 
+    if (player1Move == "R"):
+      if (player2Move == "R"):
+        print("You both picked Rock, draw!")
+      elif (player2Move == "S"):
+        print("Player1 smashed Player2's Scissors into dust with their Rock!")
+        player1_score += 1
+      elif (player2Move == "P"):
+        print("Player1's Rock is smothered by Player2's Paper!")
+        player2_score += 1
+    elif (player1Move == "P"):
+      if (player2Move == "R"):
+        print("Player2's Rock is smothered by Player1's Paper!")
+        player1_score += 1
+      elif (player2Move == "S"):
+        print("Player1's Paper is cut into tiny pieces by Player2's Scissors!")
+        player2_score += 1
+      elif (player2Move == "P"):
+        print("Two bits of paper flap at each other. Dissapointing. Draw.")
+    elif (player1Move == "S"):
+      if (player2Move == "R"):
+        print("Player 2's Rock makes metal-dust out of Player1's Scissors")
+        player2_score += 1
+      elif (player2Move == "S"):
+        print(
+            "Ka-Shing! Scissors bounce off each other like a dodgy sword fight! Draw."
+        )
+      elif (player2Move == "P"):
+        print("Player1's Scissors make confetti out of Player2's paper!")
+        player1_score += 1
 
+  # hint: make sure you add player scores at the end of all the options but still inside the while loop.
+    print("Player 1 has", player1_score, "wins.")
+    print("Player 2 has", player2_score, "wins.")
 
-      if(player1Move=="R"):
-        if(player2Move=="R"):
-          print("You both picked Rock, draw!")
-        elif(player2Move=="S"):
-          print("Player1 smashed Player2's Scissors into dust with their Rock!")
-          player1_score += 1
-        elif(player2Move=="P"):
-          print("Player1's Rock is smothered by Player2's Paper!")
-          player2_score += 1
-      elif(player1Move=="P"):
-        if(player2Move=="R"):
-          print("Player2's Rock is smothered by Player1's Paper!")
-          player1_score += 1
-        elif(player2Move=="S"):
-          print("Player1's Paper is cut into tiny pieces by Player2's Scissors!")
-          player2_score += 1
-        elif(player2Move=="P"):
-          print("Two bits of paper flap at each other. Dissapointing. Draw.")
-      elif(player1Move=="S"):
-        if(player2Move=="R"):
-          print("Player 2's Rock makes metal-dust out of Player1's Scissors")
-          player2_score += 1
-        elif(player2Move=="S"):
-          print("Ka-Shing! Scissors bounce off each other like a dodgy sword fight! Draw.")
-        elif(player2Move=="P"):
-          print("Player1's Scissors make confetti out of Player2's paper!")
-          player1_score += 1
-
-    # hint: make sure you add player scores at the end of all the options but still inside the while loop.
-      print("Player 1 has", player1_score, "wins.")
-      print("Player 2 has", player2_score, "wins.")
-
-      if player1_score==3 or player2_score==3:
-        if player1_score>= 3:
-          print( player1_name,"has won this battle succcessfull")
-        elif player2_score>=3:
-          print(player2_name,"has won this battle succcessfull")
-        print("Thanks for playing!")
-        exit()
-      else:
-        continue
-  
+    if player1_score == 3 or player2_score == 3:
+      if player1_score >= 3:
+        print(player1_name, "has won this battle succcessfull")
+      elif player2_score >= 3:
+        print(player2_name, "has won this battle succcessfull")
+      print("Thanks for playing!")
+      exit()
+    else:
+      continue
 
 
 def display_score(player1_score, player2_score):
-    print("Scoreboard:")
-    print("Player 1:", player1_score)
-    print("Player 2:", player2_score)
+  print("Scoreboard:")
+  print("Player 1:", player1_score)
+  print("Player 2:", player2_score)
+
 
 def reset_scores():
-    return 0, 0
+  return 0, 0
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
   player1_score, player2_score = reset_scores()
   print("E P I C    🪨  📄 ✂️    B A T T L E ")
   print()
-  print("Select your move (R, P or S)")
+
   print()
-  player1_score=0
-  player2_score=0
-  
+  player1_score = 0
+  player2_score = 0
+
   player1_name = input("Enter Player 1's name: ")
   player2_name = input("Enter Player 2's name: ")
 
-  play_game(player1_score,player2_score)
-   
-  
-  
+  rules = input("If you want to see the rules for the game, press Yes or No: ")
 
+  if rules.upper() == "YES":
+    show_rules()
+
+  elif (rules.upper() == "NO"):
+    pass
+
+  play_game(player1_score, player2_score)
